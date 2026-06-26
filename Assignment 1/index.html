@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal homepage of Partho Probal, Computer Science student at Brac University"
+    />
+    <meta name="author" content="Partho Probal" />
+    <title>Personal Homepage - Partho Probal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="theme-toggle" class="theme-toggle-input" />
+
+    <div class="theme-toggle-wrapper">
+      <label for="theme-toggle" class="theme-toggle-label">
+        
+        <span class="theme-toggle-icon">🌙</span>
+	<span class="theme-toggle-icon">☀️</span>
+      </label>
+    </div>
+
+    <header>
+      <div class="Personal Information">
+        <h1>Partho Probal</h1>
+        <p>Student, Bsc. in Computer Science (CS), Brac University</p>
+        <img
+          class="profile-photo"
+          src="my photo.jpg"
+          alt="Profile photo of Partho Probal"
+        />
+      </div>
+
+      <nav>
+        <a href="#personal">Personal</a>
+        <a href="#edu">Education</a>
+        <a href="#links">Links</a>
+        <a href="#quote">Quote</a>
+        <a href="#contact">Contact</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a
+          href="https://github.com/ParthoProbal"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+        <a href="#topMovies">Most Favorite Movies of All Times</a>
+      </nav>
+
+      <section id="personal">
+        <h2>Personal Info</h2>
+        <div class="card">
+          <p>
+            <strong>Name:</strong>
+            Partho Probal
+          </p>
+          <p>
+            I am from Brac University, in my 8th semester. I am a Career
+            Speedrunner, trying to finish my academic degree as quickly as
+            possible, so that I can go to Europe, and repair my damaged first 25
+            years of my life...
+          </p>
+          <p><strong>Email:</strong> partho.probal@g.bracu.ac.bd</p>
+
+          <div style="margin-top: 15px">
+            <p><strong>My University:</strong></p>
+            <img
+              src="https://www.bracu.ac.bd/sites/default/files/about%20BRACU1.jpg"
+              alt="Brac University Logo"
+              style="width: 120px; height: auto"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="edu">
+        <h2>Education</h2>
+        <div class="card">
+          <p>
+            <strong>Bsc. in Computer Science (CS), Brac University</strong>
+          </p>
+          <p><strong>Relevant Course: </strong> cse391</p>
+        </div>
+      </section>
+
+      <section id="links">
+        <h2>Categorised Links</h2>
+
+        <div class="link-category">
+          <h3>Catch Me On</h3>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/ParthoProbal"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/share/1J8MqNHHGc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Facebook</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.bracu.ac.bd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Bracu University</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://discord.gg/NHsMA6AFz"
+                target="_blank"
+                rel="noopener noreferrer"
+                >cse391 Discord Server</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="quote">
+        <h2>Favorite Quote</h2>
+        <div class="card">
+          <p>
+            <strong>
+              <em
+                >"War is where the young and stupid are tricked by the old and
+                bitter into killing each other." - Niko Belic</em
+              >
+            </strong>
+          </p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="card">
+          <form
+            action="https://formsubmit.co/2ac379bee14fc8dbe11d3736bd2bbb98"
+            method="POST"
+          >
+            <div>
+              <label
+                for="contact-name"
+                style="display: block; margin-bottom: 5px; font-weight: 600"
+                >Name:</label
+              >
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                required
+                style="
+                  width: 100%;
+                  padding: 12px;
+                  border-radius: 8px;
+                  background: rgba(0, 0, 0, 0.05);
+                  color: inherit;
+                  border: 1px solid currentColor;
+                  font-family: inherit;
+                "
+              />
+            </div>
+            <div style="margin-top: 15px">
+              <label
+                for="contact-email"
+                style="display: block; margin-bottom: 5px; font-weight: 600"
+                >Email:</label
+              >
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                required
+                style="
+                  width: 100%;
+                  padding: 12px;
+                  border-radius: 8px;
+                  background: rgba(0, 0, 0, 0.05);
+                  color: inherit;
+                  border: 1px solid currentColor;
+                  font-family: inherit;
+                "
+              />
+            </div>
+            <div style="margin-top: 15px">
+              <label
+                for="contact-message"
+                style="display: block; margin-bottom: 5px; font-weight: 600"
+                >Message:</label
+              >
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                required
+                style="
+                  width: 100%;
+                  padding: 12px;
+                  border-radius: 8px;
+                  background: rgba(0, 0, 0, 0.05);
+                  color: inherit;
+                  border: 1px solid currentColor;
+                  font-family: inherit;
+                  resize: vertical;
+                "
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              style="
+                margin-top: 15px;
+                padding: 12px 24px;
+                background: #2d84d8;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+              "
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="topMovies">
+        <h2>My All Time Favorite Movies</h2>
+        <div class="card">
+          <ol>
+            <li>
+              <strong>Before Sunrise (1995)</strong>
+            </li>
+            <li><strong>Her (2013)</strong></li>
+            <li>
+              <strong>Pluto (2023)</strong>
+            </li>
+            <li><strong>Cosmos (2014)</strong></li>
+            <li>
+              <strong>Breaking Bad (2008)</strong>
+            </li>
+            <li>
+              <strong>Master Keaton (1998)</strong>
+            </li>
+            <li>
+              <strong>Rainbow (2010)</strong>
+            </li>
+          </ol>
+          <p>
+            You can check out more of my favorites on
+            <a
+              href="https://app.trakt.tv/profile/me/favorites?mode=media"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Trakt</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section id="table">
+        <h2>
+          My Weekly Schedule (It's never the exact, always something else)
+        </h2>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Morning (9am-12pm)</th>
+                <th>Afternoon (1pm-5pm)</th>
+                <th>Evening (6pm-10pm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Monday</strong></td>
+                <td>
+                  CSE391 Lecture<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Web Programming</span
+                  >
+                </td>
+                <td>
+                  Study &amp; Coding Practice<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Working on assignments</span
+                  >
+                </td>
+                <td>
+                  Gaming<br /><span style="font-size: 0.85rem; color: #aaa"
+                    >Story mode games</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Tuesday</strong></td>
+                <td>
+                  CSE391 Lab<br /><span style="font-size: 0.85rem; color: #aaa"
+                    >Hands-on practice</span
+                  >
+                </td>
+                <td>
+                  Other Courses<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Data Structures &amp; Algorithms</span
+                  >
+                </td>
+                <td>
+                  Cardistry Practice<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Perfecting the Sybil cut</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Wednesday</strong></td>
+                <td>
+                  Rest &amp; Recovery<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Catching up on sleep</span
+                  >
+                </td>
+                <td rowspan="2">
+                  Project Work<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Group projects &amp; collaboration</span
+                  >
+                </td>
+                <td>
+                  Cooking Experiments<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Trying new recipes</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Thursday</strong></td>
+                <td>
+                  CSE391 Review<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Going over lecture notes</span
+                  >
+                </td>
+                <td>
+                  PC Building<br /><span style="font-size: 0.85rem; color: #aaa"
+                    >Testing &amp; repairing</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Friday</strong></td>
+                <td colspan="2" style="text-align: center">
+                  Weekend<br /><span style="font-size: 0.85rem; color: #aaa"
+                    >Planning &amp; Relaxation</span
+                  >
+                </td>
+                <td>
+                  Movie Marathon<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Romantic &amp; anime movies</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Saturday</strong></td>
+                <td>
+                  Sleep In<br /><span style="font-size: 0.85rem; color: #aaa"
+                    >Catching up on rest</span
+                  >
+                </td>
+                <td>
+                  Grocery Shopping<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Buying ingredients</span
+                  >
+                </td>
+                <td rowspan="2">
+                  Cooking &amp; Relaxation<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Preparing meals for the week</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Sunday</strong></td>
+                <td>
+                  Review Week<br /><span style="font-size: 0.85rem; color: #aaa"
+                    >Planning for next week</span
+                  >
+                </td>
+                <td>
+                  Study Session<br /><span
+                    style="font-size: 0.85rem; color: #aaa"
+                    >Catching up on backlog</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa">
+            <span style="color: #f1c40f">&#128204;</span>
+            <strong>Note:</strong> This Schedule is Broken due to FIFA World
+            Cup. I support Mbappe!!!
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <p>&copy; 2026 Partho Probal. All rights reserved.</p>
+        <p style="font-size: 0.85rem; margin-top: 5px">
+          Valid HTML5 &amp; CSS3 | W3C Compliant
+        </p>
+      </footer>
+    </header>
+  </body>
+</html>
