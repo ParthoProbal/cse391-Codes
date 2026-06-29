@@ -421,7 +421,16 @@
         <p style="font-size: 0.85rem; margin-top: 5px">
           Valid HTML5 &amp; CSS3 | W3C Compliant
         </p>
+        <p id="pageUpdate" style="font-size: 0.8rem; margin-top: 8px; color: #888;"></p>
       </footer>
     </header>
+
+    <script>
+      const info = document.getElementById('pageUpdate');
+      const loc = window.location.pathname.split('/').pop() || 'index.html';
+      const mod = document.lastModified;
+      info.textContent = `${loc}  |  Last updated: ${mod}`;
+    </script>
+    
   </body>
 </html>
