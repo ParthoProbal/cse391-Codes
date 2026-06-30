@@ -44,7 +44,7 @@ How the Nzxt theme should look like. Also what the colors and other things can l
 ------------------------------------------------------------
 List specific files/sections where AI helped significantly:
 
-File: style.css Section: anywhere
+File: style.css Section: body, background, etc
 File: _________________ Section: _________________
 File: _________________ Section: _________________
 
