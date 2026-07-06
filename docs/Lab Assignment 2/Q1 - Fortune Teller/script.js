@@ -17,10 +17,16 @@ const fortunes = [
 
 const fortuneBox = document.querySelector('.fortuneBoxClass'); // querySelector returns the First HTML tag with the Given ID/Class, here class was selected
 const fortuneText = document.getElementById('fortuneText'); // gets Element By ID from the DOM
+const fortuneHeader = document.querySelector('.fortuneHeaderClass'); // gets the heading element for metadata display
 
 
 function showRandomFortune() {
     const randomIndex = Math.floor(Math.random() * fortunes.length) // math.random() returns 0 >= num > 1
+    let fNo = randomIndex + 1;
+    let totalFNo = fortunes.length;
+    let fByTotal = fNo + "/" + totalFNo;
+    
+    fortuneHeader.textContent = "Fortune : " + fByTotal; // Distribute contents to their respective designated tags
     fortuneText.textContent = fortunes[randomIndex]; //.textContent gets the text from the id=fortuneText, and then assigns from the array
 }
 
