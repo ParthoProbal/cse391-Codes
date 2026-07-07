@@ -32,50 +32,29 @@ function showRandomFortune() {
 
 // Styling START
 
-let textColorIndex = 0;
-let bgColorIndex = 0;
-let borderColorIndex = 0;
-let fontIndex = 0;
+let currentThemeIndex = 0;
 
-const textColors = ['#3d2e26', '#1e4a3b', '#7a3e2e', '#4f3a6b', '#a63c3c', '#1f6b5e'];
-const bgColors = ['#fefcf7', '#f6efe8', '#d9e3dd', '#f1e1d4', '#cbdad5', '#e8d9d1'];
-const borderColors = ['#d9c8b2', '#b7a28b', '#8f7a63', '#a68d7b', '#c3a68a', '#ad8f78'];
-const fontStyles = [
-    { size: '1.8rem', family: "'Georgia', 'Times New Roman', serif" },
-    { size: '2.2rem', family: "'Palatino', 'Georgia', serif" },
-    { size: '1.5rem', family: "'Segoe UI', Roboto, sans-serif" },
-    { size: '2.0rem', family: "'Arial', Helvetica, sans-serif" },
-    { size: '1.9rem', family: "'Trebuchet MS', sans-serif" },
-    { size: '2.4rem', family: "'Courier New', monospace" }
+const themes = [
+    { textColor: '#1e4a3b', bgColor: '#e2f0d9', borderColor: '#70ad47', size: '1.8rem', family: "'Georgia', 'Times New Roman', serif" },
+    { textColor: '#7a3e2e', bgColor: '#fff2cc', borderColor: '#ffc000', size: '2.2rem', family: "'Palatino', 'Georgia', serif" },
+    { textColor: '#1f6b5e', bgColor: '#ddebf7', borderColor: '#5bc0de', size: '1.5rem', family: "'Segoe UI', Roboto, sans-serif" },
+    { textColor: '#3d2e26', bgColor: '#fce4d6', borderColor: '#ed7d31', size: '2.0rem', family: "'Arial', Helvetica, sans-serif" }
 ];
 
 function applyStyles() {
-    fortuneText.style.color = textColors[textColorIndex];
-    fortuneBox.style.backgroundColor = bgColors[bgColorIndex];
-    fortuneBox.style.borderColor = borderColors[borderColorIndex];
-    fortuneText.style.fontSize = fontStyles[fontIndex].size;
-    fortuneText.style.fontFamily = fontStyles[fontIndex].family;
+    const theme = themes[currentThemeIndex];
+    fortuneText.style.color = theme.textColor;
+    fortuneBox.style.backgroundColor = theme.bgColor;
+    fortuneBox.style.borderColor = theme.borderColor;
+    fortuneText.style.fontSize = theme.size;
+    fortuneText.style.fontFamily = theme.family;
 }
 // Styling END
 
-// Cycling through Styles
-function cycleStyle(styleType) {
-    if (styleType === 'textColor') {
-        textColorIndex = (textColorIndex + 1) % textColors.length;
-    } else if (styleType === 'bgColor') {
-        bgColorIndex = (bgColorIndex + 1) % bgColors.length;
-    } else if (styleType === 'borderColor') {
-        borderColorIndex = (borderColorIndex + 1) % borderColors.length;
-    } else if (styleType === 'fontStyle') {
-        fontIndex = (fontIndex + 1) % fontStyles.length;
-    }
-    applyStyles();
-}
-
 document.querySelectorAll('.controlButton').forEach(button => { // querySelectorAll returns array type data where id/class is = parametre
     button.addEventListener('click', function() {
-        const styleType = this.getAttribute('dataStyle');
-        cycleStyle(styleType);
+        currentThemeIndex = parseInt(this.getAttribute('dataTheme'));
+        applyStyles();
     });
 });
 
