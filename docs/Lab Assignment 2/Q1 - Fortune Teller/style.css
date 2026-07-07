@@ -88,30 +88,23 @@ body {
 }
 
 .controls {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-width: 180px;
+  display: grid;
+  grid-template-columns: repeat(2, 45px);
+  gap: 0.5rem;
   margin-top: 2.15rem; 
 }
 
 .controlButton {
-  background: #f0e6dc;
-  border: 1px solid #dcd0c4;
-  border-radius: 12px;
-  padding: 0.9rem 1.4rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #4a3b32;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
   transition: all 0.2s ease;
-  letter-spacing: 0.3px;
 }
 
 .controlButton:hover {
-  background: #e6dad0;
-  border-color: #cbdad5;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
@@ -138,18 +131,10 @@ body {
   }
   
   .controls {
-    flex-direction: row;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(4, 45px);
     justify-content: center;
     width: 100%;
     margin-top: 0;
-  }
-
-  .controlButton {
-    flex: 1 1 calc(50% - 0.5rem);
-    min-width: 130px;
-    padding: 0.8rem;
-    text-align: center;
   }
   
   #fortuneHeaderID {
