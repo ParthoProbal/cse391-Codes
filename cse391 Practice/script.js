@@ -109,6 +109,143 @@ document.cookie = "name = Probal";
 document.cookie = "date of Birth (Original) = 21-02-2004";
 document.cookie = `${encodeURIComponent(movie)} = ${encodeURIComponent(movieType)}`;
 
+let correctAns = [0, 2]
+let givenAns = [-1, -1]
+
+function selectAns(quesitonIdx, givenIdx) {
+    givenAns[quesitonIdx] = givenIdx;
+}
+
+function evaluateAns() {
+    let marks = 0;
+
+    for (let i = 0; i < correctAns.length; i++) {
+        if (correctAns[i] === givenAns[i]) {
+            marks++;
+        }
+    }
+
+    let theMarks = document.getElementsByClassName("marksGot")[0];
+    theMarks.innerHTML = "You got " + marks + "/" + correctAns.length + " !"
+
+    let studentName = prompt("Enter Your name: ");
+    let studentId = prompt("Enter ID: ");
+    let stuInfo = [studentName, marks];
+    document.cookie = `${studentId} = ${JSON.stringify(stuInfo)}`;
+
+    location.reload();
+}
+
+// (i) Array of questions with unique id, question, options, and correct answer index
+let questions = [
+    {
+        "id": 1,
+        "question": "What is the capital of Bangladesh?",
+        "options": ["Chittagong", "Dhaka", "Sylhet", "Rajshahi"],
+        "correct": 1
+    },
+    {
+        "id": 2,
+        "question": "Which programming language runs in the browser?",
+        "options": ["Java", "C++", "JavaScript", "Python"],
+        "correct": 2
+    },
+    {
+        "id": 3,
+        "question": "What is 5 + 3?",
+        "options": ["6", "7", "8", "9"],
+        "correct": 2
+    }
+];
+
+let currentQuesIdx = 0;
+let totalPoints = 0;
+let correctCount = 0;
+let incorrectCount = 0;
+let selectedOption = -1;
+
+// (ii) Display the question one-by-one inside an HTML table
+function renderQuestion() {
+    let container = document.getElementById("quizContainer");
+
+    if (currentQuesIdx < questions.length) {
+        let q = questions[currentQuesIdx];
+        selectedOption = -1; // reset selected index for new question
+
+        let html = "<table border='1' cellpadding='10'>";
+        html += "<tr><th>Question " + q.id + "</th><td>" + q.question + "</td></tr>";
+        
+        for (let i = 0; i < q.options.length; i++) {
+            html += "<tr>";
+            html += "<td><input type='radio' name='qOpt' value='" + i + "' onclick='selectOption(" + i + ")'></td>";
+            html += "<td>" + q.options[i] + "</td>";
+            html += "</tr>";
+        }
+
+        // (iii) Create a submit button labeled "Answer" at the bottom of the table
+        html += "<tr><td colspan='2' align='center'><input type='button' value='Answer' onclick='submitAnswer()'></td></tr>";
+        html += "</table>";
+
+        container.innerHTML = html;
+    } else {
+        // (iv) & (v) Summary and Leaderboard handling after all questions are completed
+        showFinalSummary();
+    }
+}
+
+function selectOption(optIdx) {
+    selectedOption = optIdx;
+}
+
+// (iii) Check answer, add 5 points if correct, update counts, save to cookie
+function submitAnswer() {
+    if (selectedOption === -1) {
+        alert("Please select an answer first!");
+        return;
+    }
+
+    let q = questions[currentQuesIdx];
+
+    if (selectedOption === q.correct) {
+        totalPoints += 5;
+        correctCount++;
+    } else {
+        incorrectCount++;
+    }
+
+    // Save total points to cookie
+    document.cookie = "totalPoints=" + totalPoints;
+
+    currentQuesIdx++;
+    renderQuestion();
+}
+
+// (iv) & (v) Show summary and ask for name to store in leaderboard cookie
+function showFinalSummary() {
+    let container = document.getElementById("quizContainer");
+    
+    let summaryText = "<h2>Quiz Completed!</h2>";
+    summaryText += "<p>Correct Answers: " + correctCount + "</p>";
+    summaryText += "<p>Incorrect Answers: " + incorrectCount + "</p>";
+    summaryText += "<p>Final Score: " + totalPoints + " points</p>";
+
+    container.innerHTML = summaryText;
+
+    let studentName = prompt("Quiz Finished! Enter your name for the leaderboard:");
+
+    if (studentName) {
+        let leaderboardData = [studentName, totalPoints];
+        
+        // Using serialize() if available or JSON fallback
+        let serializedVal = typeof serialize === "function" ? serialize(leaderboardData) : JSON.stringify(leaderboardData);
+        
+        // Save to separate cookie variable
+        document.cookie = "leaderboard=" + encodeURIComponent(serializedVal);
+    }
+}
+
+// Initial load call
+renderQuestion();
 
 
 document.write(theNum)
