@@ -6,6 +6,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\brandController;
 use App\Http\Controllers\cityController;
 use App\Http\Controllers\carListingController;
+use App\Http\Controllers\adminController;
 
 Route::get('/', [homeController::class, 'index'])->name('home');
 
@@ -106,6 +107,11 @@ Route::middleware('auth')->group(function () {
         '/car-listings/{carListing}',
         [carListingController::class, 'destroy']
     )->name('car_listings.destroy');
+
+    Route::get(
+        '/admin',
+        [adminController::class, 'dashboard']
+    )->name('admin.dashboard');
 });
 
 Route::get(

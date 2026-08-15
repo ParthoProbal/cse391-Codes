@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -49,7 +50,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function carListings(): HasMany {
+    public function carListings(): HasMany
+    {
         return $this->hasMany(CarListing::class);
     }
 }
