@@ -34,4 +34,26 @@ class homeController extends Controller
 
         return view('home', compact('featuredCars'));
     }
+
+    public function seller(User $user): View
+    {
+        $carListings = $user
+
+            ->carListings()
+
+            ->where(
+                'status',
+                'approved'
+            )
+
+            ->get();
+
+        return view(
+            'seller',
+            compact(
+                'user',
+                'carListings'
+            )
+        );
+    }
 }

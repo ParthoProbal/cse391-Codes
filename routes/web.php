@@ -50,19 +50,19 @@ Route::put('/cities/{city}', [CityController::class, 'update'])
 Route::delete('/cities/{city}', [CityController::class, 'destroy'])
     ->name('cities.destroy');
 
-Route::get('/car-listings', [CarListingController::class, 'index'])
+Route::get('/car-listings', [carListingController::class, 'index'])
     ->name('car_listings.index');
 
-Route::get('/car-listings/create', [CarListingController::class, 'create'])
+Route::get('/car-listings/create', [carListingController::class, 'create'])
     ->name('car_listings.create');
 
-Route::post('/car-listings', [CarListingController::class, 'store'])
+Route::post('/car-listings', [carListingController::class, 'store'])
     ->name('car_listings.store');
 
-
-
-
-    
+Route::get(
+    '/car-listings/{carListing}',
+    [carListingController::class, 'show']
+)->name('car_listings.show');
 
 
 
@@ -71,15 +71,46 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/car-listings/create', [CarListingController::class, 'create'])
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+
+    Route::get('/car-listings/create', [carListingController::class, 'create'])
         ->name('car_listings.create');
 
-    Route::post('/car-listings', [CarListingController::class, 'store'])
+    Route::post('/car-listings', [carListingController::class, 'store'])
         ->name('car_listings.store');
+
+    Route::get(
+        '/my-listings',
+        [carListingController::class, 'myListings']
+    )->name('car_listings.my');
+
+    Route::get(
+        '/car-listings/{carListing}/edit',
+        [carListingController::class, 'edit']
+    )->name('car_listings.edit');
+
+    Route::put(
+        '/car-listings/{carListing}',
+        [carListingController::class, 'update']
+    )->name('car_listings.update');
+
+    Route::delete(
+        '/car-listings/{carListing}',
+        [carListingController::class, 'destroy']
+    )->name('car_listings.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get(
+    '/seller/{user}',
+    [homeController::class, 'seller']
+)->name('seller.show');
+
+require __DIR__ . '/auth.php';

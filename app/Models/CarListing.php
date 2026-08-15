@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CarListing extends Model
 {
@@ -23,15 +24,18 @@ class CarListing extends Model
         'is_featured',
     ];
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function brand(): BelongsTo {
+    public function brand(): BelongsTo
+    {
         return $this->belongsTo(Brand::class);
     }
 
-    public function city(): BelongsTo {
+    public function city(): BelongsTo
+    {
         return $this->belongsTo(City::class);
     }
 }
