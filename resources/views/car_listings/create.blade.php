@@ -11,8 +11,7 @@
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 
 </head>
 
@@ -34,10 +33,24 @@
 
                         <form
                             action="{{ route('car_listings.store') }}"
-                            method="POST"
-                        >
+                            method="POST" enctype="multipart/form-data">
 
                             @csrf
+                            <!-- Image -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+
+                                    Car Image
+
+                                </label>
+
+                                <input
+                                    type="file"
+                                    name="image"
+                                    class="form-control">
+
+                            </div>
 
                             <!-- Brand -->
 
@@ -49,8 +62,7 @@
 
                                 <select
                                     name="brand_id"
-                                    class="form-select @error('brand_id') is-invalid @enderror"
-                                >
+                                    class="form-select @error('brand_id') is-invalid @enderror">
 
                                     <option value="">
                                         Select Brand
@@ -58,21 +70,20 @@
 
                                     @foreach($brands as $brand)
 
-                                        <option
-                                            value="{{ $brand->id }}"
-                                            {{ old('brand_id') == $brand->id ? 'selected' : '' }}
-                                        >
-                                            {{ $brand->name }}
-                                        </option>
+                                    <option
+                                        value="{{ $brand->id }}"
+                                        {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
+                                        {{ $brand->name }}
+                                    </option>
 
                                     @endforeach
 
                                 </select>
 
                                 @error('brand_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
 
                             </div>
@@ -88,8 +99,7 @@
 
                                 <select
                                     name="city_id"
-                                    class="form-select @error('city_id') is-invalid @enderror"
-                                >
+                                    class="form-select @error('city_id') is-invalid @enderror">
 
                                     <option value="">
                                         Select City
@@ -97,21 +107,20 @@
 
                                     @foreach($cities as $city)
 
-                                        <option
-                                            value="{{ $city->id }}"
-                                            {{ old('city_id') == $city->id ? 'selected' : '' }}
-                                        >
-                                            {{ $city->name }}
-                                        </option>
+                                    <option
+                                        value="{{ $city->id }}"
+                                        {{ old('city_id') == $city->id ? 'selected' : '' }}>
+                                        {{ $city->name }}
+                                    </option>
 
                                     @endforeach
 
                                 </select>
 
                                 @error('city_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
 
                             </div>
@@ -130,13 +139,12 @@
                                     name="title"
                                     class="form-control @error('title') is-invalid @enderror"
                                     value="{{ old('title') }}"
-                                    placeholder="Example: Toyota Corolla 2020"
-                                >
+                                    placeholder="Example: Toyota Corolla 2020">
 
                                 @error('title')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
 
                             </div>
@@ -155,13 +163,12 @@
                                     name="model"
                                     class="form-control @error('model') is-invalid @enderror"
                                     value="{{ old('model') }}"
-                                    placeholder="Example: Corolla"
-                                >
+                                    placeholder="Example: Corolla">
 
                                 @error('model')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
 
                             </div>
@@ -181,13 +188,12 @@
                                         type="number"
                                         name="year"
                                         class="form-control @error('year') is-invalid @enderror"
-                                        value="{{ old('year') }}"
-                                    >
+                                        value="{{ old('year') }}">
 
                                     @error('year')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
 
                                 </div>
@@ -207,13 +213,12 @@
                                         step="0.01"
                                         class="form-control @error('price') is-invalid @enderror"
                                         value="{{ old('price') }}"
-                                        placeholder="Example: 18500"
-                                    >
+                                        placeholder="Example: 18500">
 
                                     @error('price')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
 
                                 </div>
@@ -236,13 +241,12 @@
                                         name="mileage"
                                         class="form-control @error('mileage') is-invalid @enderror"
                                         value="{{ old('mileage') }}"
-                                        placeholder="Example: 50000"
-                                    >
+                                        placeholder="Example: 50000">
 
                                     @error('mileage')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
 
                                 </div>
@@ -258,8 +262,7 @@
 
                                     <select
                                         name="fuel_type"
-                                        class="form-select @error('fuel_type') is-invalid @enderror"
-                                    >
+                                        class="form-select @error('fuel_type') is-invalid @enderror">
 
                                         <option value="">
                                             Select Fuel
@@ -284,9 +287,9 @@
                                     </select>
 
                                     @error('fuel_type')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
 
                                 </div>
@@ -302,8 +305,7 @@
 
                                     <select
                                         name="transmission"
-                                        class="form-select @error('transmission') is-invalid @enderror"
-                                    >
+                                        class="form-select @error('transmission') is-invalid @enderror">
 
                                         <option value="">
                                             Select Transmission
@@ -320,9 +322,9 @@
                                     </select>
 
                                     @error('transmission')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                     @enderror
 
                                 </div>
@@ -342,13 +344,12 @@
                                     name="description"
                                     rows="5"
                                     class="form-control @error('description') is-invalid @enderror"
-                                    placeholder="Describe the car..."
-                                >{{ old('description') }}</textarea>
+                                    placeholder="Describe the car...">{{ old('description') }}</textarea>
 
                                 @error('description')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
                                 @enderror
 
                             </div>
@@ -358,15 +359,13 @@
 
                                 <a
                                     href="{{ route('car_listings.index') }}"
-                                    class="btn btn-secondary"
-                                >
+                                    class="btn btn-secondary">
                                     Cancel
                                 </a>
 
                                 <button
                                     type="submit"
-                                    class="btn btn-primary"
-                                >
+                                    class="btn btn-primary">
                                     Submit Listing
                                 </button>
 

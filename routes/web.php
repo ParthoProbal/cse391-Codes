@@ -73,20 +73,30 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/profile', [ProfileController::class, 'edit'])
-        ->name('profile.edit');
+    Route::get(
+        '/profile',
+        [ProfileController::class, 'edit']
+    )->name('profile.edit');
 
-    Route::patch('/profile', [ProfileController::class, 'update'])
-        ->name('profile.update');
+    Route::patch(
+        '/profile',
+        [ProfileController::class, 'update']
+    )->name('profile.update');
 
-    Route::delete('/profile', [ProfileController::class, 'destroy'])
-        ->name('profile.destroy');
+    Route::delete(
+        '/profile',
+        [ProfileController::class, 'destroy']
+    )->name('profile.destroy');
 
-    Route::get('/car-listings/create', [carListingController::class, 'create'])
-        ->name('car_listings.create');
+    Route::get(
+        '/car-listings/create',
+        [carListingController::class, 'create']
+    )->name('car_listings.create');
 
-    Route::post('/car-listings', [carListingController::class, 'store'])
-        ->name('car_listings.store');
+    Route::post(
+        '/car-listings',
+        [carListingController::class, 'store']
+    )->name('car_listings.store');
 
     Route::get(
         '/my-listings',
@@ -107,11 +117,39 @@ Route::middleware('auth')->group(function () {
         '/car-listings/{carListing}',
         [carListingController::class, 'destroy']
     )->name('car_listings.destroy');
+});
+
+Route::middleware('auth')->group(function () {
 
     Route::get(
         '/admin',
         [adminController::class, 'dashboard']
     )->name('admin.dashboard');
+
+    Route::get(
+        '/admin/listings',
+        [adminController::class, 'listings']
+    )->name('admin.listings');
+
+    Route::patch(
+        '/admin/listings/{carListing}/approve',
+        [adminController::class, 'approveListing']
+    )->name('admin.listings.approve');
+
+    Route::patch(
+        '/admin/listings/{carListing}/reject',
+        [adminController::class, 'rejectListing']
+    )->name('admin.listings.reject');
+
+    Route::get(
+        '/admin/users',
+        [adminController::class, 'users']
+    )->name('admin.users');
+
+    Route::patch(
+        '/admin/users/{user}',
+        [adminController::class, 'toggleAdmin']
+    )->name('admin.users.toggle');
 });
 
 Route::get(

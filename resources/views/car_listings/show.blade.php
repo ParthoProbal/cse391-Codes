@@ -18,10 +18,11 @@
 
                 <div class="col-md-6">
 
+                    @if($carListing->image)
                     <img
-                        src="https://placehold.co/600x400"
-                        class="img-fluid rounded"
-                        alt="Car Image">
+                        src="{{ asset('storage/' . $carListing->image) }}"
+                        class="img-fluid rounded">
+                    @endif
 
                 </div>
 

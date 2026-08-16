@@ -10,8 +10,7 @@
     <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
 </head>
 
 <body class="bg-dark text-light">
@@ -28,8 +27,7 @@
                 class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#mainNavigation"
-            >
+                data-bs-target="#mainNavigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -44,39 +42,47 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('car_listings.index') }}">
                             Browse Cars
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            About
-                        </a>
-                    </li>
+                    <section id="about">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">
+                                About
+                            </a>
+                        </li>
+                    </section>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Contact
-                        </a>
-                    </li>
+                    <section id="contact">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">
+                                Contact
+                            </a>
+                        </li>
+                    </section>
 
                 </ul>
 
                 <div class="d-flex gap-2">
-
                     @guest
-                        <a href="{{ url('/login') }}" class="btn btn-outline-light">
-                            Login
-                        </a>
-
-                        <a href="{{ url('/register') }}" class="btn btn-primary">
-                            Register
-                        </a>
+                    <a
+                        href="{{ route('login') }}"
+                        class="btn btn-primary me-2">
+                        Login
+                    </a>
+                    <a
+                        href="{{ route('register') }}"
+                        class="btn btn-outline-primary">
+                        Register
+                    </a>
                     @else
-                        <a href="#" class="btn btn-primary">
-                            Dashboard
-                        </a>
+                    <a
+                        href="{{ route('dashboard') }}"
+                        class="btn btn-primary">
+                        Dashboard
+                    </a>
                     @endguest
 
                 </div>
@@ -109,7 +115,9 @@
                         Search by brand, city, price and more.
                     </p>
 
-                    <a href="#" class="btn btn-primary btn-lg">
+                    <a
+                        href="{{ route('car_listings.index') }}"
+                        class="btn btn-primary btn-lg">
                         Browse Cars
                     </a>
 
@@ -120,8 +128,7 @@
                     <img
                         src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1000&q=80"
                         class="img-fluid rounded-4 shadow-lg"
-                        alt="Used car"
-                    >
+                        alt="Used car">
 
                 </div>
 
@@ -143,7 +150,8 @@
                         Find Your Car
                     </h3>
 
-                    <form>
+                    <form action="{{ route('car_listings.index') }}"
+                        method="GET">
 
                         <div class="row g-3">
 
@@ -156,8 +164,7 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    placeholder="Toyota, Honda, BMW..."
-                                >
+                                    placeholder="Toyota, Honda, BMW...">
 
                             </div>
 
@@ -167,15 +174,18 @@
                                     Brand
                                 </label>
 
-                                <select class="form-select">
-
-                                    <option>All Brands</option>
-                                    <option>Toyota</option>
-                                    <option>Honda</option>
-                                    <option>BMW</option>
-
+                                <select
+                                    name="brand_id"
+                                    class="form-select">
+                                    <option value="">
+                                        All Brands
+                                    </option>
+                                    @foreach($brands as $brand)
+                                    <option value="{{ $brand->id }}">
+                                        {{ $brand->name }}
+                                    </option>
+                                    @endforeach
                                 </select>
-
                             </div>
 
                             <div class="col-lg-2">
@@ -184,12 +194,17 @@
                                     City
                                 </label>
 
-                                <select class="form-select">
-
-                                    <option>All Cities</option>
-                                    <option>Dhaka</option>
-                                    <option>Chittagong</option>
-
+                                <select
+                                    name="city_id"
+                                    class="form-select">
+                                    <option value="">
+                                        All Cities
+                                    </option>
+                                    @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">
+                                        {{ $city->name }}
+                                    </option>
+                                    @endforeach
                                 </select>
 
                             </div>
@@ -212,8 +227,9 @@
                             </div>
 
                             <div class="col-lg-2 d-flex align-items-end">
-
-                                <button class="btn btn-primary w-100">
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary">
                                     Search
                                 </button>
 
@@ -250,7 +266,9 @@
 
                 </div>
 
-                <a href="#" class="btn btn-outline-light">
+                <a
+                    href="{{ route('car_listings.index') }}"
+                    class="btn btn-outline-light">
                     View All
                 </a>
 
@@ -259,57 +277,41 @@
 
             <div class="row g-4">
 
-                @foreach ($featuredCars as $car)
+                @foreach($featuredCars as $car)
 
-                    <div class="col-md-6 col-lg-4">
+                <div class="col-md-4">
+                    <div class="card bg-black text-light h-100">
+                        @if($car->image)
+                        <img
+                            src="{{ asset('storage/' . $car->image) }}"
+                            class="card-img-top"
+                            style="height:220px; object-fit:cover;">
+                        @endif
 
-                        <div class="card bg-black border-secondary h-100 shadow-sm">
+                        <div class="card-body">
+                            <h4>
+                                {{ $car->title }}
+                            </h4>
 
-                            <img
-                                src="{{ $car['image'] }}"
-                                class="card-img-top"
-                                alt="{{ $car['name'] }}"
-                                style="height: 220px; object-fit: cover;"
-                            >
+                            <p class="text-secondary">
+                                {{ $car->city->name }}
+                            </p>
 
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between">
-
-                                    <h5 class="fw-bold">
-                                        {{ $car['name'] }}
-                                    </h5>
-
-                                    <span class="badge bg-secondary">
-                                        {{ $car['year'] }}
-                                    </span>
-
-                                </div>
-
-                                <p class="text-secondary">
-                                    {{ $car['location'] }}
-                                </p>
-
-                                <h4 class="text-primary">
-                                    {{ $car['price'] }}
-                                </h4>
-
-                            </div>
-
-                            <div class="card-footer bg-black border-secondary">
-
-                                <a href="#" class="btn btn-outline-primary w-100">
-                                    View Details
-                                </a>
-
-                            </div>
-
+                            <h3 class="text-primary">
+                                ${{ number_format($car->price) }}
+                            </h3>
                         </div>
 
+                        <div class="card-footer bg-black border-secondary">
+                            <a
+                                href="{{ route('car_listings.index') }}"
+                                class="btn btn-outline-light">
+                                View All
+                            </a>
+                        </div>
                     </div>
-
+                </div>
                 @endforeach
-
             </div>
 
         </div>

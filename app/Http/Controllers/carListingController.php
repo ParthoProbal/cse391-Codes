@@ -103,7 +103,22 @@ class carListingController extends Controller
             'fuel_type' => 'required|string|max:50',
             'transmission' => 'required|string|max:50',
             'description' => 'required|string',
+            'image' => 'nullable|image|max:2048',
         ]);
+
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+
+            $imagePath = $request
+
+                ->file('image')
+
+                ->store(
+                    'cars',
+                    'public'
+                );
+        }
 
         CarListing::create([
             'user_id' => auth()->id(),
@@ -118,6 +133,7 @@ class carListingController extends Controller
             'transmission' => $request->transmission,
             'description' => $request->description,
             'status' => 'pending',
+            'image' => $imagePath,
             'is_featured' => false,
         ]);
 
