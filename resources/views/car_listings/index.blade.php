@@ -180,7 +180,7 @@
                         </h4>
 
                         <a
-                            href="#"
+                            href="{{ route('car_listings.show', $carListing) }}"
                             class="btn btn-outline-primary w-100 mt-3">
                             View Details
                         </a>

@@ -6,6 +6,7 @@ use Illuminate\View\View;
 use App\Models\Brand;
 use App\Models\CarListing;
 use App\Models\City;
+use App\Models\User;
 
 class homeController extends Controller
 {
@@ -38,18 +39,19 @@ class homeController extends Controller
     public function seller(User $user): View
     {
         $carListings = $user
-
             ->carListings()
-
+            ->with([
+                'brand',
+                'city'
+            ])
             ->where(
                 'status',
                 'approved'
             )
-
             ->get();
 
         return view(
-            'seller',
+            'car_listings.seller',
             compact(
                 'user',
                 'carListings'

@@ -46,6 +46,18 @@
                         View Listings
                     </button></a>
 
+                <a href="{{ route('cities.create') }}"><button class="bg-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        Create Cities
+                    </button></a>
+
+                <a href="{{ route('cities.index') }}"><button class="bg-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        View/Edit Cities
+                    </button></a>
+
+                <a href="{{ route('admin.users') }}"><button class="bg-cyan-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                        User Admin Control
+                    </button></a>
+
 
             </div>
         </div>

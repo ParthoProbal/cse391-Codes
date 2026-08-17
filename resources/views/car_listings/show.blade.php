@@ -1,121 +1,185 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
 
-@section('content')
+<head>
 
-<div class="container py-5">
+    <meta charset="UTF-8">
 
-    <div class="card bg-dark border-secondary text-light">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-        <div class="card-body">
+    <title>
+        {{ $carListing->title }}
+    </title>
 
-            <h2 class="mb-4">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
-                {{ $carListing->title }}
+</head>
 
-            </h2>
+<body class="bg-dark text-light">
 
-            <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
 
-                <div class="col-md-6">
+        <div class="container">
 
-                    @if($carListing->image)
-                    <img
-                        src="{{ asset('storage/' . $carListing->image) }}"
-                        class="img-fluid rounded">
-                    @endif
+            <a
+                class="navbar-brand fw-bold"
+                href="{{ route('home') }}">
 
-                </div>
+                Auto<span class="text-primary">Market</span>
 
-                <div class="col-md-6">
+            </a>
 
-                    <h4 class="mb-3">
+            <div>
 
-                        ${{ number_format($carListing->price) }}
+                <a
+                    href="{{ route('car_listings.index') }}"
+                    class="btn btn-outline-light">
 
-                    </h4>
+                    Back to Listings
 
-                    <p>
-
-                        <strong>Brand:</strong>
-
-                        {{ $carListing->brand->name }}
-
-                    </p>
-
-                    <p>
-
-                        <strong>Model:</strong>
-
-                        {{ $carListing->model }}
-
-                    </p>
-
-                    <p>
-
-                        <strong>Year:</strong>
-
-                        {{ $carListing->year }}
-
-                    </p>
-
-                    <p>
-
-                        <strong>Mileage:</strong>
-
-                        {{ number_format($carListing->mileage) }} km
-
-                    </p>
-
-                    <p>
-
-                        <strong>Fuel Type:</strong>
-
-                        {{ $carListing->fuel_type }}
-
-                    </p>
-
-                    <p>
-
-                        <strong>Transmission:</strong>
-
-                        {{ $carListing->transmission }}
-
-                    </p>
-
-                    <p>
-
-                        <strong>City:</strong>
-
-                        {{ $carListing->city->name }}
-
-                    </p>
-
-                    <p>
-
-                        <strong>Seller:</strong>
-
-                        {{ $carListing->user->name }}
-
-                    </p>
-
-                </div>
+                </a>
 
             </div>
 
-            <hr>
+        </div>
 
-            <h5>Description</h5>
+    </nav>
 
-            <p>
+    <div class="container py-5">
 
-                {{ $carListing->description }}
+        <div class="card bg-black border-secondary text-light">
 
-            </p>
+            <div class="card-body p-4">
+
+                <h2 class="mb-4">
+
+                    {{ $carListing->title }}
+
+                </h2>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+
+                        @if($carListing->image)
+
+                        <img
+                            src="{{ asset('storage/' . $carListing->image) }}"
+                            class="img-fluid rounded">
+
+                        @endif
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <h3 class="text-primary mb-4">
+
+                            ${{ number_format($carListing->price) }}
+
+                        </h3>
+
+                        <p>
+
+                            <strong>Brand:</strong>
+
+                            {{ $carListing->brand->name }}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Model:</strong>
+
+                            {{ $carListing->model }}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Year:</strong>
+
+                            {{ $carListing->year }}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Mileage:</strong>
+
+                            {{ number_format($carListing->mileage) }} km
+
+                        </p>
+
+                        <p>
+
+                            <strong>Fuel Type:</strong>
+
+                            {{ $carListing->fuel_type }}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Transmission:</strong>
+
+                            {{ $carListing->transmission }}
+
+                        </p>
+
+                        <p>
+
+                            <strong>City:</strong>
+
+                            {{ $carListing->city->name }}
+
+                        </p>
+
+                        <p>
+
+                            <strong>Seller:</strong>
+
+                            <a
+                                href="{{ route('seller.show', $carListing->user) }}"
+                                class="text-decoration-none">
+
+                                {{ $carListing->user->name }}
+
+                            </a>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <h5>
+
+                    Description
+
+                </h5>
+
+                <p>
+
+                    {{ $carListing->description }}
+
+                </p>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-@endsection
+</body>
+
+</html>
