@@ -65,11 +65,11 @@
                     <div class="col-md-6">
 
                         @if($carListing->image)
-
                         <img
                             src="{{ asset('storage/' . $carListing->image) }}"
-                            class="img-fluid rounded">
-
+                            class="img-fluid rounded"
+                            style="width: 100%; max-height: 500px; object-fit: cover;"
+                            alt="{{ $carListing->title }}">
                         @endif
 
                     </div>
@@ -152,6 +152,36 @@
 
                         </p>
 
+                        <p>
+
+                            <strong>Email:</strong>
+                            <span id="sellerEmail">
+                                {{ $carListing->user->email }}
+                            </span>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary ms-2"
+                                onclick="copyToClipboard('sellerEmail')">
+                                Copy
+                            </button>
+                        </p>
+
+                        <p>
+                            <strong>Phone:</strong>
+                            <span id="sellerPhone">
+                                {{ $carListing->user->phone }}
+                            </span>
+
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-outline-primary ms-2"
+                                onclick="copyToClipboard('sellerPhone')">
+                                Copy
+                            </button>
+
+                        </p>
+
                     </div>
 
                 </div>
@@ -178,6 +208,14 @@
 
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+            alert('Copied to clipboard!');
+        }
     </script>
 
 </body>

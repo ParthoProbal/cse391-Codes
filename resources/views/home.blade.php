@@ -280,21 +280,33 @@
                 @foreach($featuredCars as $car)
 
                 <div class="col-md-4">
-                    <div class="card bg-black text-light h-100">
+
+                    <div class="card bg-black text-light h-100 border-secondary">
+
                         @if($car->image)
+
                         <img
                             src="{{ asset('storage/' . $car->image) }}"
                             class="card-img-top"
-                            style="height:220px; object-fit:cover;">
+                            style="height:220px; object-fit:cover;"
+                            alt="{{ $car->title }}">
+
                         @endif
 
                         <div class="card-body">
+
                             <h4>
                                 {{ $car->title }}
                             </h4>
 
                             <p class="text-secondary">
+                                {{ $car->brand->name }}
+                                •
                                 {{ $car->city->name }}
+                            </p>
+
+                            <p class="mb-2">
+                                Year: {{ $car->year }}
                             </p>
 
                             <h3 class="text-primary">
@@ -304,14 +316,16 @@
 
                         <div class="card-footer bg-black border-secondary">
                             <a
-                                href="{{ route('car_listings.index') }}"
-                                class="btn btn-outline-light">
-                                View All
+                                href="{{ route('car_listings.show', $car) }}"
+                                class="btn btn-outline-light w-100">
+                                View Details
                             </a>
+
                         </div>
                     </div>
                 </div>
                 @endforeach
+
             </div>
 
         </div>

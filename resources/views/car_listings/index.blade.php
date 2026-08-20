@@ -149,9 +149,20 @@
 
                 <div class="card h-100 bg-black border-secondary">
 
+                    @if($carListing->image)
+
+                    <img
+                        src="{{ asset('storage/' . $carListing->image) }}"
+                        class="card-img-top"
+                        style="height:220px; object-fit:cover;"
+                        alt="{{ $carListing->title }}">
+
+                    @endif
+
                     <div class="card-body">
 
                         <h5 class="card-title">
+
                             <a
                                 href="{{ route('car_listings.show', $carListing) }}"
                                 class="text-decoration-none text-light">
@@ -159,30 +170,41 @@
                                 {{ $carListing->title }}
 
                             </a>
+
                         </h5>
 
                         <p class="text-secondary mb-2">
+
                             {{ $carListing->brand->name }}
                             •
                             {{ $carListing->city->name }}
+
                         </p>
 
                         <p class="mb-2">
+
                             Year: {{ $carListing->year }}
+
                         </p>
 
                         <p class="mb-2">
+
                             Mileage: {{ number_format($carListing->mileage) }} km
+
                         </p>
 
                         <h4 class="text-primary">
+
                             ${{ number_format($carListing->price, 2) }}
+
                         </h4>
 
                         <a
                             href="{{ route('car_listings.show', $carListing) }}"
                             class="btn btn-outline-primary w-100 mt-3">
+
                             View Details
+
                         </a>
 
                     </div>

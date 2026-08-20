@@ -22,6 +22,7 @@ class CarListing extends Model
         'description',
         'status',
         'is_featured',
+        'image',
     ];
 
     public function user(): BelongsTo
